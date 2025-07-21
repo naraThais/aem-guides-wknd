@@ -1,0 +1,48 @@
+{
+    // examples of using repo to push and pull files and folders from a server running at localhost:4502
+    // the tasks with folders actions will be perfomed on the folder of the current file open in the editor
+    // see https://code.visualstudio.com/docs/editor/variables-reference for more details
+    "version": "2.0.0",
+      "tasks": [
+    {
+      "label": "get file",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "repo get -f $(cygpath -u \"${file}\")"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "put file",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "repo put -f $(cygpath -u \"${file}\")"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "get folder",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "repo get -f $(cygpath -u \"${fileDirname}\")"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "put folder",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "repo put -f $(cygpath -u \"${fileDirname}\")"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
