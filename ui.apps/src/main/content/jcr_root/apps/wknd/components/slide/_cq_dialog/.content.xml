@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Slide"
     sling:resourceType="cq/gui/components/authoring/dialog">
@@ -17,60 +18,54 @@
                         jcr:title="Conteúdo"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
+
                         <items jcr:primaryType="nt:unstructured">
-                            <columns
+                            <column
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                margin="{Boolean}true">
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <column
+                                    <alignment
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Alinhamento do Texto"
+                                        name="./alignment">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <alignment
+                                            <left
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Alinhamento do Texto"
-                                                name="./alignment">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <left
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Esquerda"
-                                                        value="text-start"/>
-                                                    <center
-                                                        jcr:primaryType="nt:unstructured"
-                                                        selected="{Boolean}true"
-                                                        text="Centralizado"
-                                                        value=""/>
-                                                    <right
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Direita"
-                                                        value="text-end"/>
-                                                </items>
-                                            </alignment>
-                                            <title
+                                                text="Esquerda"
+                                                value="text-start" />
+                                            <center
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="Insira o título do slide"
-                                                fieldLabel="Título"
-                                                name="./title"
-                                                required="{Boolean}true"/>
-                                            <description
+                                                selected="{Boolean}true"
+                                                text="Centralizado"
+                                                value="" />
+                                            <right
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="Insira a descrição do slide"
-                                                fieldLabel="Descrição"
-                                                name="./description"/>
+                                                text="Direita"
+                                                value="text-end" />
                                         </items>
-                                    </column>
+                                    </alignment>
+                                    <title
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Insira o título do slide"
+                                        fieldLabel="Título"
+                                        name="./title"
+                                        required="{Boolean}true" />
+                                    <description
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Insira a descrição do slide"
+                                        fieldLabel="Descrição"
+                                        name="./description" />
                                 </items>
-                            </columns>
+                            </column>
                         </items>
                     </properties>
                     <asset
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Imagem"
-                        sling:resourceType="granite/ui/components/coral/foundation/container"/>
+                        sling:resourceType="granite/ui/components/coral/foundation/container" />
                     <link
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Link"
@@ -90,21 +85,26 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Ex: Saiba Mais"
+                                                fieldDescription="Nome que o botão receberá no front-end."
                                                 fieldLabel="Texto do Botão"
-                                                name="./buttonName"/>
+                                                name="./buttonName"
+                                                required="{Boolean}false" />
                                             <internalLink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Selecione uma página interna."
+                                                emptyText="Selecione a URL para um endereço interno."
+                                                fieldDescription="Link para qual o botão irá redirecionar."
                                                 fieldLabel="Link Interno"
+                                                forceSelection="{Boolean}true"
+                                                rootPath="/content/markuptest"
                                                 name="./internalLink"
-                                                rootPath="/content"/>
+                                                required="{Boolean}false" />
                                             <externalLink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Insira a URL completa (ex: https://www.google.com)."
                                                 fieldLabel="Link Externo"
-                                                name="./externalLink"/>
+                                                name="./externalLink" />
                                         </items>
                                     </column>
                                 </items>
