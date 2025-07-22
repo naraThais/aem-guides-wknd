@@ -35,6 +35,43 @@ body {
 }
 
 
+/* Hide the default list markers for carousel indicators */
+.carousel-indicators li {
+    list-style: none !important; /* This is the key property */
+    /* You might also want to ensure no text is visually rendered if for some reason it's still there */
+    font-size: 0 !important;
+    text-indent: -9999px !important;
+    overflow: hidden !important;
+    line-height: 0 !important;
+}
+
+/* Ensure any pseudo-elements that might add content are also removed, though 'list-style: none' usually handles this for markers */
+.carousel-indicators li::before,
+.carousel-indicators li::after {
+    content: none !important;
+}
+
+/* Reconfirming counter reset just in case */
+.carousel-indicators {
+    counter-reset: none !important;
+}
+
+/* Optional: Re-style the indicator lines themselves if they changed appearance after hiding numbers */
+.carousel-indicators [data-bs-target] {
+    width: 30px; /* Example: width of the line */
+    height: 3px; /* Example: height of the line */
+    margin: 0 3px; /* Space between lines */
+    border-radius: 0; /* Make them square/rectangular lines */
+    background-color: rgba(255, 255, 255, 0.5); /* Color of inactive lines */
+    border: none; /* Remove any default borders */
+    opacity: 0.8; /* Adjust opacity as needed */
+    transition: opacity 0.6s ease; /* Smooth transition */
+}
+
+.carousel-indicators .active {
+    background-color: #fff; /* Color of the active line */
+    opacity: 1; /* Full opacity for active line */
+}
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
