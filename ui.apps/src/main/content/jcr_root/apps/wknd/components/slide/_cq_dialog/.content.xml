@@ -96,7 +96,7 @@
                                                 fieldDescription="Link para qual o botão irá redirecionar."
                                                 fieldLabel="Link Interno"
                                                 forceSelection="{Boolean}true"
-                                                rootPath="/content/markuptest"
+                                                rootPath="/content/wknd"
                                                 name="./internalLink"
                                                 required="{Boolean}false" />
                                             <externalLink
