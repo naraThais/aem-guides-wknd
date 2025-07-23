@@ -156,14 +156,6 @@ body {
   object-fit: cover;
 }
 
-.aem-container.btn{
-  color: rgb(216, 255, 124) !important;
-}
-
-.slide-bs-item.btn{
-  color: rgb(73, 148, 209)!important;
-}
-
-.btn-primary{
+/* .btn-thais-primary{ 
    color: rgb(73, 148, 209) !important;
-}
+}*/
