@@ -1,0 +1,18 @@
+
+<template
+data-sly-template.contentFragment="${@ fragment='The content fragment', fragmentPath='', wcmode='WCM mode'}"
+>
+
+<div class="col-lg-4">
+  <img
+    class="bd-placeholder-img rounded-circle"
+    src="${fragment.elements[0].value}"
+    alt="Profile 02"
+    width="140"
+    height="140"
+  />
+  <h2>${fragment.elements[1].value}</h2>
+    ${fragment.elements[2].value @ context='html'} 
+  <p><a class="btn btn-secondary" href="#">View details »</a></p>
+</div>
+</template>

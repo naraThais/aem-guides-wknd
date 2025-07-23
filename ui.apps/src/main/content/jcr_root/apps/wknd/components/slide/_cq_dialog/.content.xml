@@ -51,7 +51,7 @@
                                         emptyText="Insira o título do slide"
                                         fieldLabel="Título"
                                         name="./title"
-                                        required="{Boolean}true" />
+                                        required="{Boolean}false" />
                                     <description
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
