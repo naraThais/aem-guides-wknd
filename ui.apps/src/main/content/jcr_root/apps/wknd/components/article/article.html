@@ -3,7 +3,10 @@
 data-sly-template.contentFragment="${@ fragment='The content fragment', fragmentPath='', wcmode='WCM mode'}"
 >
 
-<div class="col-lg-4">
+<div class="col-lg-4 d-flex flex-column justify-content-between">
+  <div>
+
+  
   <img
     class="bd-placeholder-img rounded-circle"
     src="${fragment.elements[0].value}"
@@ -11,8 +14,9 @@ data-sly-template.contentFragment="${@ fragment='The content fragment', fragment
     width="140"
     height="140"
   />
+  </div>
   <h2>${fragment.elements[1].value}</h2>
     ${fragment.elements[2].value @ context='html'} 
-  <p><a class="btn btn-secondary" href="/content/wknd/us/en/artigo.html?id=${fragment.name}">View details »</a></p>
+  <p><a class="btn btn-primary" href="/content/wknd/us/en/artigo.html?id=${fragment.name}">Saiba Mais.. »</a></p>
 </div>
 </template>
