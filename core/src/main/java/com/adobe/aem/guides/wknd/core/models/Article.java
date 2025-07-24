@@ -22,7 +22,7 @@ public interface Article {
 
     String getRecipe();
 
-    String getDate();
+    GregorianCalendar getDate();
 
     String getThumbnail();
 
@@ -30,6 +30,6 @@ public interface Article {
 
     String getText();
 
-    String getDocuments();
+    List<Document> getDocuments();
 
 }
