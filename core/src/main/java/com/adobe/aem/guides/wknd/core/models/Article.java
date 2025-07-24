@@ -6,30 +6,29 @@ import java.util.List;
 public interface Article {
     void setTitle(String title);
 
-    void setRecipe(String recipe);
-
-    void setDate(GregorianCalendar date);
-
-    void setThumbnail(String thumbnail);
+    String getTitle();
 
     void setDescription(String description);
 
-    void setText(String text);
+    String getDescription();
 
-    void setDocuments(List<Document> documents);
+    void setAuthor(String author);
 
-    String getTitle();
+    String getAuthor();
 
-    String getRecipe();
+    void setDate(GregorianCalendar date);
 
     GregorianCalendar getDate();
 
+    void setThumbnail(String thumbnail);
+
     String getThumbnail();
 
-    String getDescription();
+    void setText(String text);
 
     String getText();
 
-    List<Document> getDocuments();
+    void setDocuments(List<Document> documents);
 
+    List<Document> getDocuments();
 }

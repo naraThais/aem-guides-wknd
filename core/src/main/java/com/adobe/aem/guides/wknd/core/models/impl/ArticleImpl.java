@@ -4,13 +4,11 @@ import com.adobe.aem.guides.wknd.core.models.Article;
 import com.adobe.aem.guides.wknd.core.models.Document;
 import com.adobe.aem.guides.wknd.core.utils.ArticleBuilder;
 
+import javax.annotation.PostConstruct;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -18,53 +16,41 @@ import org.apache.sling.models.annotations.injectorspecific.RequestAttribute;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
-@Model(adaptables = { SlingHttpServletRequest.class, Resource.class }, adapters = {
-        Article.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = {
-                ArticleImpl.RESOURCE_TYPE })
-
+@Model(adaptables = { SlingHttpServletRequest.class }, adapters = {
+        Article.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = ArticleImpl.RESOURCE_TYPE)
 public class ArticleImpl implements Article {
 
     protected static final String RESOURCE_TYPE = "markeup/models/components/article";
 
-    private String titile;
-    private String recipe;
+    private String title;
     private String description;
+    private String author;
     private GregorianCalendar date;
-    private String text;
     private String thumbnail;
+    private String text;
     private List<Document> documents;
 
     @Self
     private SlingHttpServletRequest request;
     @SlingObject
-    private ResourceResolver resourceResolver;
+    private ResourceResolver resolver;
     @RequestAttribute
     private String fragmentName;
 
     @PostConstruct
     protected void init() {
-        ArticleBuilder articleBuilder = new ArticleBuilder(request, resourceResolver);
-        articleBuilder.buildArticle(this, "/conf/wknd/settings/dam/cfm/models/artigo", fragmentName);
+        ArticleBuilder builder = new ArticleBuilder(request, resolver);
+        builder.buildArticle(this, "/conf/wknd/settings/dam/cfm/models/artigo", fragmentName);
     }
 
     @Override
     public void setTitle(String title) {
-        this.titile = title;
+        this.title = title;
     }
 
     @Override
-    public void setRecipe(String recipe) {
-        this.recipe = recipe;
-    }
-
-    @Override
-    public void setDate(GregorianCalendar date) {
-        this.date = date;
-    }
-
-    @Override
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
+    public String getTitle() {
+        return title;
     }
 
     @Override
@@ -73,23 +59,23 @@ public class ArticleImpl implements Article {
     }
 
     @Override
-    public void setText(String text) {
-        this.text = text;
+    public String getDescription() {
+        return description;
     }
 
     @Override
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     @Override
-    public String getTitle() {
-        return titile;
+    public String getAuthor() {
+        return author;
     }
 
     @Override
-    public String getRecipe() {
-        return recipe;
+    public void setDate(GregorianCalendar date) {
+        this.date = date;
     }
 
     @Override
@@ -98,13 +84,18 @@ public class ArticleImpl implements Article {
     }
 
     @Override
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    @Override
     public String getThumbnail() {
         return thumbnail;
     }
 
     @Override
-    public String getDescription() {
-        return description;
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override
@@ -113,8 +104,12 @@ public class ArticleImpl implements Article {
     }
 
     @Override
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
+    }
+
+    @Override
     public List<Document> getDocuments() {
         return documents;
     }
-
 }

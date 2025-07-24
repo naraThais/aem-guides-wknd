@@ -25,6 +25,7 @@ public class SlideImpl implements Slide {
 
     @ValueMapValue
     private String title;
+    
 
     @ValueMapValue
     private String description;
