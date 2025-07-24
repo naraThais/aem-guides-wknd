@@ -4,22 +4,22 @@ package com.adobe.aem.guides.wknd.core.models;
 public class Document {
 
     private String name;
-    private String filePath;
+    private String file;
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public void setFile(String file) {
+        this.file = file;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public String getFile() {
+        return file;
     }
 
 }

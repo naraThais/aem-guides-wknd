@@ -76,7 +76,7 @@ public class ArticleBuilder {
         for (String filepath : filepaths) {
             ContentFragment cfDocument = getContentFragmentByFilepath(resolver, filepath);
             Document document = new Document();
-            document.setFilePath(getTextValue(cfDocument, "file"));
+            document.setFile(getTextValue(cfDocument, "file"));
             document.setName(getTextValue(cfDocument, "fileName"));
             documents.add(document);
         }
